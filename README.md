@@ -14,7 +14,7 @@
 
 
 ```javascript
-//var l = new loading();
+//var l = new MyLoading();
 var l = new MyLoading({ //这里是全局配置,下面的都是默认选项
 	id: 'my-loading', //loading的唯一标记,用于区分loading,默认为这个
 	type: 'round', //round,bar，两种风格

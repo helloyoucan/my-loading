@@ -72,21 +72,30 @@ var MyLoading = (function() {
 		this._addDom(dom, opt);
 	}
 	Loading.prototype.hide = function(opt) {
-		var id = '',
-			thisLoading = {};
-		if(typeof opt == "string") {
-			id = opt == null ? OPTION.id : opt;
-			var thisLoading = document.getElementById(id);
-			thisLoading.parentElement.style.overflow = OPTION.afterHideLoadingOverflow;
-			thisLoading.remove();
-		} else {
-			id = opt.id == null ? OPTION.id : opt.id;
-			thisLoading = document.getElementById(id);
-			thisLoading.parentElement.style.overflow = opt.afterHideLoadingOverflow == null ? OPTION.afterHideLoadingOverflow : opt.afterHideLoadingOverflow;
-			opt.beforeHide == null ? OPTION.beforeHide() : opt.beforeHide();
-			thisLoading.remove();
-			opt.afterHide == null ? OPTION.afterHide() : opt.afterHide();
-		}
+		   var id = '',
+            thisLoading = {};
+        if (typeof opt == "string") {
+            id = opt == null ? OPTION.id : opt;
+            var thisLoading = document.getElementById(id);
+            thisLoading.parentElement.style.overflow = OPTION.afterHideLoadingOverflow;
+            thisLoading.remove();
+        } else {
+            id = (opt != undefined && ('id' in opt) ) ?
+                opt.id
+                :
+                OPTION.id;
+            thisLoading = document.getElementById(id);
+            thisLoading.parentElement.style.overflow =
+                (opt != undefined && ('afterHideLoadingOverflow' in opt) )
+                    ?
+                    opt.afterHideLoadingOverflow
+
+                    :
+                    OPTION.afterHideLoadingOverflow;
+            (opt != undefined && ('beforeHide' in opt)) ? opt.beforeHide() : OPTION.beforeHide();
+            thisLoading.remove();
+            (opt != undefined && ('afterHide' in opt) ) ? opt.afterHide() : OPTION.afterHide();
+        }
 
 	}
 	Loading.prototype.destroy = function() {

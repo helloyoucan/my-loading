@@ -26,7 +26,7 @@ var MyLoading = (function() {
 	Loading.prototype._addStyle = function() {
 		var styleDom = document.createElement('style');
 		styleDom.innerHTML =
-			'.my-loading {position: absolute;left: 0;right: 0;top: 0;bottom: 0;}' +
+			'.my-loading {position: absolute;left: 0;right: 0;top: 0;bottom: 0;z-index:999;}' +
 			'.m_l-content{position: absolute;top: 50%;left: 50%;width: 120px;height: 80px;margin-top: -40px;margin-left: -60px;text-align: center;}' +
 			'.my-loading img.bar {width: 104px;height: 13px;}' +
 			'.my-loading img.round {width: 50px;height: 50px;}' +
